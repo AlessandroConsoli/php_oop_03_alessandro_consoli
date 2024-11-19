@@ -1,14 +1,15 @@
 <?php
 
-abstract class Vertebrates{
-    protected $bloodType;
-    protected $habitat;
+class Vertebrates{
 
-    public function __constructor($sangueCaldoFreddo, $doveVive){
-        $this->bloodType = $sangueCaldoFreddo;
-        $this->habitat = $doveVive;
-        echo "Sono un vertebrato";
+    public function __construct(){
+        $this->printVertebrate();
     }
+
+    protected function printVertebrate(){
+        echo "Sono un vertebrato \n";
+    }
+
 }
 
 
@@ -17,37 +18,44 @@ abstract class Vertebrates{
 
 class WarmBlooded extends Vertebrates{
     
-    public function __constructor($sangueCaldoFreddo, $doveVive){
-        parent::__constructor($sangueCaldoFreddo, $doveVive);
-        if ($sangueCaldoFreddo == "sangue caldo"){
-            $tipoDiSangue = "Sono un animale a sangue caldo";
-            echo "Sono un animale a sangue caldo";
-            return $doveVive;
-        }
+    public function __construct(){
+
+        parent::__construct();
+        $this->printWarmBlooded();
+
     }
+
+    protected function printWarmBlooded(){
+        echo "Sono un animale a sangue caldo \n";
+    }
+
 }
 
 
 
 
 class Mammals extends WarmBlooded{
-    public function __constructor($sangueCaldoFreddo, $doveVive){
-        parent::__constructor($sangueCaldoFreddo, $doveVive);
-        if ($tipoDiSangue = "Sono un animale a sangue caldo" && $doveVive == "terraferma") {
-            $tipoDiAnimale = "sono un mammifero";
-            echo "sono un mammifero";
-        }
+    
+    public function __construct(){
+        parent::__construct();
+        $this->printMammals();
+    }
+
+    protected function printMammals(){
+        echo "Sono un mammifero \n";
     }
 }
 
 
 class Birds extends WarmBlooded{
-    public function __constructor($sangueCaldoFreddo, $doveVive){
-        parent::__constructor($sangueCaldoFreddo, $doveVive);
-        if ($tipoDiSangue = "Sono un animale a sangue caldo" && $doveVive == "aria e terraferma") {
-            $tipoDiAnimale = "sono un volatile";
-            echo "sono un volatile";
-        }
+    
+    public function __construct(){
+        parent::__construct();
+        $this->printBirds();
+    }
+
+    protected function printBirds(){
+        echo "Sono un volatile \n";
     }
 }
 
@@ -58,49 +66,64 @@ class Birds extends WarmBlooded{
 
 
 class ColdBlooded extends Vertebrates{
-    public function __constructor($sangueCaldoFreddo, $doveVive){
-        parent::__constructor($sangueCaldoFreddo, $doveVive);
-        if ($sangueCaldoFreddo == "sangue freddo") {
-            $tipoDiSangue = "Sono un animale a sangue freddo";
-            return $doveVive;
-        }
+    
+    public function __construct(){
+
+        parent:: __construct();
+        $this->printColdBlooded();
     }
+
+    protected function printColdBlooded(){
+        echo "Sono un animale a sangue freddo \n";
+    }
+
 }
 
 
 class Amphibian extends ColdBlooded{
-    public function __constructor($sangueCaldoFreddo, $doveVive){
-        parent::__constructor($sangueCaldoFreddo, $doveVive);
-        if ($tipoDiSangue = "Sono un animale a sangue freddo" && $doveVive == "acqua e terraferma") {
-            $tipoDiAnimale = "sono un anfibio";
-            echo "sono un anfibio";
-        }
+    
+    public function __construct(){
+        parent::__construct();
+        $this->printAmphibian();
+    }
+
+    protected function printAmphibian(){
+        echo "Sono un Anfibio \n";
     }
 }
 
 
 class Reptiles extends ColdBlooded{
-    public function __constructor($sangueCaldoFreddo, $doveVive){
-        parent::__constructor($sangueCaldoFreddo, $doveVive);
-        if ($tipoDiSangue = "Sono un animale a sangue freddo" && $doveVive == "terraferma") {
-            $tipoDiAnimale = "sono un rettile";
-            echo "sono un rettile";
-        }
+    
+    public function __construct(){
+        parent::__construct();
+        $this->printReptiles();
     }
+
+    protected function printReptiles(){
+        echo "Sono un Rettile";
+    }
+
+
+
 }
 
 
 class Fish extends ColdBlooded{
-    public function __constructor($sangueCaldoFreddo, $doveVive){
-        parent::__constructor($sangueCaldoFreddo, $doveVive);
-        if ($tipoDiSangue = "Sono un animale a sangue freddo" && $doveVive == "acqua") {
-            $tipoDiAnimale = "Splash";
-            echo "Splash";
-        }
+
+    public function __construct(){
+        parent::__construct();
+        $this->printFish();
     }
+
+    protected function printFish(){
+        echo "Splash \n";
+    }
+
 }
 
 
+$fish = new Fish();
 
 
 
